@@ -20,6 +20,7 @@ hex_to_bin = {
     '\n': 0
 }
 
+import re
 
 result = {}
 with open('keys.txt') as f:
@@ -29,11 +30,14 @@ with open('keys.txt') as f:
 
     for index, line in enumerate(f):
         count = 0
-        line = line.strip("'")
+        #line = line.strip("'")
+        sLine = re.search(r'(?:[A-Z]|[0-9])+', line)
 
-        for c in line:
-            count += hex_to_bin[c]
-        result[index+1] = count
+        if sLine != None:
+            sLine = sLine.group()
+            for c in sLine:
+                count += hex_to_bin[c]
+            result[index+1] = count
 
 
 
