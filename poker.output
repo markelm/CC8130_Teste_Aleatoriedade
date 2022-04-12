@@ -1,0 +1,29 @@
+
+>>>>>>>>>>>>> Poker Test <<<<<<<<<<<<<<
+
+Key 1 : X = 34.25 >>> PASSED
+Key 2 : X = 341.71 >>> FAILED
+Key 3 : X = 13.14 >>> PASSED
+Key 4 : X = 342.83 >>> FAILED
+Key 5 : X = 13.14 >>> PASSED
+Key 6 : X = 342.83 >>> FAILED
+Key 7 : X = 24.43 >>> PASSED
+Key 8 : X = 252.83 >>> FAILED
+Key 9 : X = 24.43 >>> PASSED
+Key 10 : X = 252.83 >>> FAILED
+Key 11 : X = 346.92 >>> FAILED
+Key 12 : X = 10.97 >>> PASSED
+Key 13 : X = 355.45 >>> FAILED
+Key 14 : X = 345.92 >>> FAILED
+Key 15 : X = 17.01 >>> PASSED
+Key 16 : X = 13.36 >>> PASSED
+Key 17 : X = 11.49 >>> PASSED
+Key 18 : X = 348.13 >>> FAILED
+Key 19 : X = 343.24 >>> FAILED
+Key 20 : X = 19.54 >>> PASSED
+Key 21 : X = 19.12 >>> PASSED
+Key 22 : X = 23.99 >>> PASSED
+Key 23 : X = 347.94 >>> FAILED
+Key 24 : X = 12.02 >>> PASSED
+Key 25 : X = 349.72 >>> FAILED
+Key 26 : X = 11.85 >>> PASSED

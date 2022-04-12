@@ -33,7 +33,7 @@ with open('keys.txt') as f:
 
         for c in line:
             count += hex_to_bin[c]
-        result[index] = count
+        result[index+1] = count
 
 
 
@@ -48,7 +48,10 @@ for key in list(result.keys()):
     else:
         testResult[key] = ('FAILED', result[key])
 
-print('\n\n############### Monobit Test ###############\n\n')
-print(testResult)
-print()
+
+print('\n>>>>>>>>>>>>> Monobit Test <<<<<<<<<<<<<<\n')
+
+for index, key in enumerate(list(testResult.keys())):
+    print(key,":", testResult[key])
+
             

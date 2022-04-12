@@ -8,7 +8,16 @@ import textwrap
 
 import re
 
-print('\n>>>>>>>>>>>>> Poker Test <<<<<<<<<<<<<<\n')
+validation = {
+    1: (2267, 2733),
+    2: (1079, 1421),
+    3: (502, 738),
+    4: (223, 402),
+    5: (90, 223),
+    6: (90, 223)
+}
+
+print('\n>>>>>>>>>>>>> Runs Test <<<<<<<<<<<<<<\n')
 
 with open('keys.txt') as f:
     #print(f.readline())
@@ -16,27 +25,62 @@ with open('keys.txt') as f:
     #    print("Line {}: {}".format(index, line.strip()))
 
     for index, line in enumerate(f):
+
+        runs = {
+            '0': {
+            1: 0,
+            2: 0,
+            3: 0,
+            4: 0,
+            5: 0,
+            6: 0
+            },
+
+            '1': {
+            1: 0,
+            2: 0,
+            3: 0,
+            4: 0,
+            5: 0,
+            6: 0
+            }
+        }
+
+
         count = {}
         #count = 0
         sLine = re.search(r'(?:[A-Z]|[0-9])+', line)
-        #binString = ''
+        binString = ''
         if sLine != None:
             sLine = sLine.group()
-            #print(sLine)
-            for c in sLine:
-                #print(c, end=' ')
-                if c not in list(count.keys()):
-                    count[c] = 1
-                else:
-                    count[c] += 1
-            sum = 0
-            for key in list(count.keys()):
-                sum += count[key]**2
+            hexString = '0x'+sLine
+            binString = str(bin(eval(hexString)))[2:]
+            
+            count = 1
+            for i in range(len(binString)):
+                if i > 0:
+                    prior = binString[i - 1]
+                    current = binString[i]
+                    if current == prior and count < 6:
+                        count += 1
+                    else:
+                        runs[prior][count] += 1
+                        count = 1
 
-            x = (16/5000)*sum - 5000
-            x = float('{:.2f}'.format(x))
-            result = 'PASSED' if x > 1.03 and x < 57.4 else "FAILED"
-            print('Key',index + 1,':','X =',x,'>>>',result)
+
+            result = 'PASSED'
+            for key in [1,2,3,4,5,6]:
+                if runs['0'][key] < validation[key][0] or runs['0'][key] > validation[key][1]:
+                    result = 'FAILED'
+                    break
+                if runs['1'][key] < validation[key][0] or runs['1'][key] > validation[key][1]:
+                    result = 'FAILED'
+                    break
+
+            #print(len(binString))
+            print(index + 1,':::',runs, result)
+            print()
+
 
             #hexString = '0x'+sLine
             #binString = str(bin(eval(hexString)))[2:]
